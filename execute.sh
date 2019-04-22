@@ -1,4 +1,4 @@
-cd /var/www/html/ & git pull origin master 
+cd /var/www/admin/ & git pull origin master 
 php artisan down
 composer install
 npm install

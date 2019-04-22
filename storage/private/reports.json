@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Caja Magisterial (CMAP)",
+        "img": "http://cmapsnte54.com.mx/informes/CMAP.jpg",
+        "pdf": "http://cmapsnte54.com.mx/informes/CMAP2017.pdf",
+        "apk": "https://play.google.com/store/apps/details?id=com.cmap",
+        "hasApk": true
+    },
+    {
+        "title": "Cooperativa",
+        "img": "http://cmapsnte54.com.mx/informes/COOP.jpg",
+        "pdf": "http://cmapsnte54.com.mx/informes/Cooperativa2017.pdf",
+        "apk": "",
+        "hasApk": false
+    },
+    {
+        "title": "SIOA",
+        "img": "http://cmapsnte54.com.mx/informes/SIOA.jpg",
+        "pdf": "http://cmapsnte54.com.mx/informes/SIOA2017.pdf",
+        "apk": "",
+        "hasApk": false
+    }
+]

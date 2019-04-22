@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("deploy"){
             steps{
-                sh 'ssh root@178.62.210.221 "bash -s execute.sh"'
+                sh 'ssh root@188.166.123.74 "bash -s execute.sh"'
             }
         }
     }

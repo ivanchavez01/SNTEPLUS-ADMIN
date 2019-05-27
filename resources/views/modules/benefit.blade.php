@@ -8,10 +8,27 @@
 
             <a href="{{url('benefits/create')}}" class="btn btn-success btn-sm float-right">
                 <i class="fa fa-plus"></i>
-                Guardar
+                Nuevo
             </a>
         </div>
         <div class="card-body">
+            <form action="" method="GET">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <input type="search" placeholder="Buscar..." value="{{request()->get('search')}}" class="form-control" name="search">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <select name="municipality" class="form-control" onchange="submit()">
+                            <option value="0">Todos</option>
+                            @foreach($municipalities as $municipality)
+                            <option value="{{$municipality->id}}" @if(request()->get("municipality") == $municipality->id) selected @endif>
+                                {{$municipality->municipio}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </form>
             <table class="table">
                 <tr>
                     <td>ID</td>

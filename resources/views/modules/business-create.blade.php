@@ -28,6 +28,16 @@
                         <label>Dirección</label>
                         <textarea class="form-control" name="address" rows="4"></textarea>
                     </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label>Latitude</label>
+                            <input class="form-control" name="lat" />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Longitude</label>
+                            <input class="form-control" name="long" />
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label>Logotipo</label>
                         <input type="file" name="logo" class="form-control">

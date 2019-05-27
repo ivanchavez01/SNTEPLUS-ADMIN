@@ -10,14 +10,24 @@ use App\ServiceType;
 
 class Benefits extends Controller
 {
-    public function index() {
-        $benefits = Benefit::paginate(20);
-            
-        return view("modules.benefit", ["benefits" => $benefits]);
+    public function index(Request $request) {
+        $benefits = Benefit::join("business", "benefits.business_id", "business.id")
+            ->orderBy("business.id", "ASC");
+        $municipality = \App\Municipality::onlySonora()->get();
+
+        if($request->get("search") != "") {
+            $benefits->where("description", "LIKE", "%".$request->get("search")."%");
+            $benefits->orWhere("business.name", "LIKE", "%".$request->get("search")."%");
+            $benefits->orWhere("business.phone", "LIKE", "%".$request->get("search")."%");
+        }
+        if($request->get("municipality") != "" && $request->get("municipality") != "0")
+            $benefits->where("municipality_id", "=", $request->get("municipality"));
+
+        return view("modules.benefit", ["benefits" => $benefits->paginate(20), "municipalities" => $municipality]);
     }
 
     public function create(Request $request) {
-        $municipalities = Municipality::all();
+        $municipalities = \App\Municipality::onlySonora()->get();
         $service_types = ServiceType::all();
         $business = Business::all();
 

@@ -9,7 +9,8 @@
                 <a href="{{url('business')}}" class="float-right">Regresar</a>
             </div>
             <div class="card-body">
-                <form action="{{url('business/update')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('business/'.$business->id)}}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
                     @csrf
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -27,6 +28,16 @@
                     <div class="form-group">
                         <label>Dirección</label>
                         <textarea class="form-control" name="address" rows="4">{{$business->address}}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label>Latitude</label>
+                            <input class="form-control" value="{{$business->lat}}" name="lat" />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Longitude</label>
+                            <input class="form-control" value="{{$business->long}}" name="long" />
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Logotipo</label>

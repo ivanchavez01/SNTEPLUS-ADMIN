@@ -40,57 +40,19 @@
         @auth 
             <p class="page-name d-none d-lg-block">Hola, {{ Auth::user()->name }}</p>
         @endif
-        <!-- <ul class="navbar-nav ml-lg-auto">
+        <ul class="navbar-nav ml-lg-auto">
+          @auth
           <li class="nav-item dropdown mail-dropdown">
-            <a class="nav-link count-indicator" id="MailDropdown" href="#" data-toggle="dropdown">
-                <i class="icon-envelope-letter icons"></i>
-                <span class="count bg-danger"></span>
+            <a class="nav-link count-indicator" href="#" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                <!-- <i class="icon-envelope-letter icons"></i> -->
+                <i class="fas fa-sign-in-alt"></i>
             </a>
-            <div class="dropdown-menu navbar-dropdown mail-notification dropdownAnimation" aria-labelledby="MailDropdown">
-              <a class="dropdown-item" href="#">
-                <div class="sender-img">
-                  <img src="images/faces/face6.jpg" alt="">
-                  <span class="badge badge-success">&nbsp;</span>
-                </div>
-                <div class="sender">
-                  <p class="Sende-name">John Doe</p>
-                  <p class="Sender-message">Hey, We have a meeting planned at the end of the day.</p>
-                </div>
-              </a>
-              <a class="dropdown-item" href="#">
-                <div class="sender-img">
-                  <img src="images/faces/face2.jpg" alt="">
-                  <span class="badge badge-success">&nbsp;</span>
-                </div>
-                <div class="sender">
-                  <p class="Sende-name">Leanne Jones</p>
-                  <p class="Sender-message">Can we schedule a call this afternoon?</p>
-                </div>
-              </a>
-              <a class="dropdown-item" href="#">
-                <div class="sender-img">
-                  <img src="images/faces/face3.jpg" alt="">
-                  <span class="badge badge-primary">&nbsp;</span>
-                </div>
-                <div class="sender">
-                  <p class="Sende-name">Stella</p>
-                  <p class="Sender-message">Great presentation the other day. Keep up the good work!</p>
-                </div>
-              </a>
-              <a class="dropdown-item" href="#">
-                <div class="sender-img">
-                  <img src="images/faces/face4.jpg" alt="">
-                  <span class="badge badge-warning">&nbsp;</span>
-                </div>
-                <div class="sender">
-                  <p class="Sende-name">James Brown</p>
-                  <p class="Sender-message">Need the updates of the project at the end of the week.</p>
-                </div>
-              </a>
-              <a href="#" class="dropdown-item view-all">View all</a>
-            </div>
+            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
           </li>
-          <li class="nav-item dropdown notification-dropdown">
+          @endif
+          <!-- <li class="nav-item dropdown notification-dropdown">
             <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="icon-speech icons"></i>
               <span class="count"></span>
@@ -136,8 +98,8 @@
                 </div>
               </a>
             </div>
-          </li>
-        </ul> -->
+          </li> -->
+        </ul> 
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center ml-auto" type="button" data-toggle="offcanvas">
           <span class="icon-menu icons"></span>
         </button>
@@ -146,23 +108,18 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <div class="row row-offcanvas row-offcanvas-right">
-      @auth 
-        @include("layouts.sidebar")
-      @endif
+        @auth 
+          @include("layouts.sidebar")
+        @endif
 
-        
         <div class="content-wrapper">
-
             @yield("content")
-
-         
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © {{date("Y")}} <a href="http://www.cmapsnte54.com.mx" target="_blank">cmapsnte54.com.mx</a>. All rights reserved.</span>
-            
           </div>
         </footer>
         <!-- partial -->

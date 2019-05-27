@@ -12,6 +12,8 @@ class Business extends Model
         "address",
         "phone",
         "logo",
+        "lat",
+        "long",
         "municipality_id",
     ];
 

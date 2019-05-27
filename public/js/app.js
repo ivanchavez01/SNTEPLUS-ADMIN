@@ -1807,9 +1807,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _message;
 
     return {
-      type: 'device',
+      type: 'channel',
       message: (_message = {
-        to: "",
+        to: "guest",
         title: ""
       }, _defineProperty(_message, "title", ""), _defineProperty(_message, "message", ""), _message)
     };
@@ -49365,8 +49365,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Emmanuel_\Desktop\dev\SNTE\admin\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Emmanuel_\Desktop\dev\SNTE\admin\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\IECS_\Desktop\Develop\snte54\admin\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\IECS_\Desktop\Develop\snte54\admin\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

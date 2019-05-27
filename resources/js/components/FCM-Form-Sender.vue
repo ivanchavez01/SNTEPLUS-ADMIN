@@ -39,9 +39,9 @@
 export default {
     data() {
         return {
-            type: 'device',
+            type: 'channel',
             message: {
-                to: "",
+                to: "guest",
                 title: "",
                 title: "",
                 message: ""

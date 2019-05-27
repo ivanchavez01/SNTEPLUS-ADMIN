@@ -12,11 +12,21 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $business = Business::paginate(20);
+        $business = Business::orderBy("id", "ASC");
+        $municipality = \App\Municipality::onlySonora()->get();
+
+        if($request->get("search") != "") {
+            $business->where("name", "LIKE", "%".$request->get("search")."%");
+            $business->orWhere("phone", "LIKE", "%".$request->get("search")."%");
+        }
+        if($request->get("municipality") != "" && $request->get("municipality") != "0")
+            $business->where("municipality_id", "=", $request->get("municipality"));
+
         return view("modules.business", [
-            "business" => $business
+            "business" => $business->paginate(20),
+            "municipalities" => $municipality
         ]);
     }
 
@@ -44,7 +54,7 @@ class BusinessController extends Controller
         $request->validate([
             "name"              => "required",
             // "address"           => "required",
-            // "phone"             => "required",
+            "phone"             => "min:10|max:10",
             "municipality_id"   => "required"
         ]);
         
@@ -99,8 +109,8 @@ class BusinessController extends Controller
     {
         $request->validate([
             "name"              => "required",
-            "address"           => "required",
-            "phone"             => "required",
+            // "address"           => "required",
+            "phone"             => "min:10|max:10",
             "municipality_id"   => "required"
         ]);
         
@@ -116,7 +126,6 @@ class BusinessController extends Controller
         $business->update();
 
         return redirect('business');
-
     }
 
     /**

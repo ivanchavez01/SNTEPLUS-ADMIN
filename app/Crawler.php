@@ -33,7 +33,7 @@ class Crawler extends Model
                 //obteniendo nombre de la imagen
                 $splits = explode("/", $image);
                 $imageName = $splits[count($splits) - 1];
-                Storage::disk("local")->put(public_path("images/".$imageName), $imageData);
+                Storage::disk("local")->put("images/".$imageName, $imageData);
                 //file_put_contents(public_path($imageName), $imageData);
 
                 $data[] = [

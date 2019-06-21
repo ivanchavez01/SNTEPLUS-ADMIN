@@ -11,7 +11,8 @@ use App\ServiceType;
 class Benefits extends Controller
 {
     public function index(Request $request) {
-        $benefits = Benefit::join("business", "benefits.business_id", "business.id")
+        $benefits = Benefit::select(["benefits.*"])
+            ->join("business", "benefits.business_id", "business.id")
             ->orderBy("business.id", "ASC");
         $municipality = \App\Municipality::onlySonora()->get();
 

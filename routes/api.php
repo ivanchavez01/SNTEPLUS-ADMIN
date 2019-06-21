@@ -26,8 +26,12 @@ Route::post("analytics", function(Request $request) {
 
     if($validator->fails())
         return response()->json(["errors" => $validator->errors()], 400);
-
-    return \App\Analytic::create($request->all());
+    
+    $analytic = \App\Analytic::where("uuid", "=", $request->post("uuid"));
+    if(!$analytic)
+        return \App\Analytic::create($request->all());
+    else 
+        return [];
 });
 
 Route::post("fcm/register", "Api\FCMController@create");

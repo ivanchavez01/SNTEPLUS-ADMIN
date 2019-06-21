@@ -21,7 +21,7 @@ class Benefits extends Controller
             $benefits->orWhere("business.phone", "LIKE", "%".$request->get("search")."%");
         }
         if($request->get("municipality") != "" && $request->get("municipality") != "0")
-            $benefits->where("municipality_id", "=", $request->get("municipality"));
+            $benefits->where("business.municipality_id", "=", $request->get("municipality"));
 
         return view("modules.benefit", ["benefits" => $benefits->paginate(20), "municipalities" => $municipality]);
     }
@@ -55,7 +55,7 @@ class Benefits extends Controller
             ]);
         }
 
-        return response()->status(404);
+        return response()->status([], 404);
     }
 
     public function save(Request $request) {

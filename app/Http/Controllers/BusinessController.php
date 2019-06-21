@@ -114,15 +114,15 @@ class BusinessController extends Controller
             "municipality_id"   => "required"
         ]);
         
-        $business = $request->all();
+        $_business = $request->all();
 
         if ($request->hasFile('logo')) {
             $path = $request->logo->store('public');
-            $business["logo"] = $path;
+            $_business["logo"] = str_replace("public/", "", $path);
         }
 
         $business = \App\Business::find($id);
-        $business->fill($request->all());
+        $business->fill($_business);
         $business->update();
 
         return redirect('business');
